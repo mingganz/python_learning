@@ -1,0 +1,264 @@
+./lc/tasks/voip/VoipDB.c:    pVoiceSvcRtData->IpLineStatus = 1;
+./lc/tasks/voip/VoipDB.c:    pVoiceSvcRtData->IpLineStatus = 1;
+./lc/tasks/voip/VoipPotsmgrMsg.c:	pVoiceSvcRtData->IpLineStatus = 1;
+./sc/cli/CliOutputFormat.c:static char* StringForIpLineStatus (
+./sc/cli/CliOutputFormat.c:    U32    IpLineStatus,
+./sc/cli/CliOutputFormat.c:    char*  sIpLineStatus,
+./sc/cli/CliOutputFormat.c:StringForIpLineStatus: Output formatting utility.	
+./sc/cli/CliOutputFormat.c:Return:	        sIpLineStatus: the formatted status string.
+./sc/cli/CliOutputFormat.c:static char* StringForIpLineStatus (
+./sc/cli/CliOutputFormat.c:    U32    IpLineStatus,
+./sc/cli/CliOutputFormat.c:    char*  sIpLineStatus,
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus == _IpLineStatusInactive_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus,"inactive", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusActive_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "active", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusSend_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "send enabled", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusReceive_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "receive enabled", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusHold_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "hold", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatus3WayCall_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "3-way call", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusCallWaiting_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "call waiting", BufSz);
+./sc/cli/CliOutputFormat.c:    return sIpLineStatus;
+./sc/cli/CliOutputFormat.c:    } /* End of StringForIpLineStatus */
+./sc/cli/CliOutputFormat.c:    char sIpLineStatus[128]         = {'\0'};
+./sc/cli/CliOutputFormat.c:            StringForIpLineStatus(pRtd->IpLineStatus, sIpLineStatus,
+./sc/cli/CliOutputFormat.c:                sizeof(sIpLineStatus)),
+./sc/cli/CliOutputFormat.c:            StringForIpLineStatus(pRtd->IpLineStatus, sIpLineStatus,
+./sc/cli/CliOutputFormat.c:                sizeof(sIpLineStatus)),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfUtils.c:		case _NetconfAttrTypeIpLineStatus_:
+./sc/netconf/NetconfUtils.c:			if (*((U32 *) pLocation) == _IpLineStatusInactive_)
+./sc/netconf/NetconfUtils.c:				for (TempU32 = _IpLineStatusActive_ ;
+./sc/netconf/NetconfUtils.c:					 TempU32 <= _IpLineStatusCallWaiting_ ;
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusActive_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusSend_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusReceive_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusHold_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatus3WayCall_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusCallWaiting_:
+./sc/netconf/NetconfUtils.c:	case _NetconfAttrTypeIpLineStatus_:
+./xponcore/gpon/olt/SxRtd.c:			    fsanOntCalixVoipCallStatsExt4Table_attr_info[ObjId_fsanOntCalixVoipCallStatsExt4IpLineStatus-3].mask_bit |
+./xponcore/port/e7/SxXlate.c:	dbObj->IpLineStatus = (U32)sxObj->ipLineStatus;
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:static OsabEnumDesc_t OmciVoipIpLineStatusEnum[] = {
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Inact , "Inact" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Act , "Act" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Snd , "Snd" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Rec , "Rec" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_SndRec , "SndRec" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Hld , "Hld" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_3wy , "3wy" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_cwt , "cwt" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:/* objectId */            ObjId_fsanOntCalixVoipCallStatsExt4IpLineStatus,
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:/* objectStr */           "fsanOntCalixVoipCallStatsExt4IpLineStatus",
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:/* nm_cli_abbr */         "IpLineStatus",
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:/* nm_cli_enum_desc */    OmciVoipIpLineStatusEnum
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    ObjId_fsanOntCalixVoipCallStatsExt4IpLineStatus,
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { "iplinestatus", ObjId_fsanOntCalixVoipCallStatsExt4IpLineStatus },
+./vxa/core/src/voipmgr.c:		pVoiceSvcRtData->IpLineStatus = 1;
+./lc/tasks/voip/VoipDB.c:    pVoiceSvcRtData->IpLineStatus = 1;
+./lc/tasks/voip/VoipDB.c:    pVoiceSvcRtData->IpLineStatus = 1;
+./lc/tasks/voip/VoipPotsmgrMsg.c:	pVoiceSvcRtData->IpLineStatus = 1;
+./sc/cli/CliOutputFormat.c:static char* StringForIpLineStatus (
+./sc/cli/CliOutputFormat.c:    U32    IpLineStatus,
+./sc/cli/CliOutputFormat.c:    char*  sIpLineStatus,
+./sc/cli/CliOutputFormat.c:StringForIpLineStatus: Output formatting utility.	
+./sc/cli/CliOutputFormat.c:Return:	        sIpLineStatus: the formatted status string.
+./sc/cli/CliOutputFormat.c:static char* StringForIpLineStatus (
+./sc/cli/CliOutputFormat.c:    U32    IpLineStatus,
+./sc/cli/CliOutputFormat.c:    char*  sIpLineStatus,
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus == _IpLineStatusInactive_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus,"inactive", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusActive_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "active", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusSend_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "send enabled", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusReceive_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "receive enabled", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusHold_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "hold", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatus3WayCall_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "3-way call", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusCallWaiting_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "call waiting", BufSz);
+./sc/cli/CliOutputFormat.c:    return sIpLineStatus;
+./sc/cli/CliOutputFormat.c:    } /* End of StringForIpLineStatus */
+./sc/cli/CliOutputFormat.c:    char sIpLineStatus[128]         = {'\0'};
+./sc/cli/CliOutputFormat.c:            StringForIpLineStatus(pRtd->IpLineStatus, sIpLineStatus,
+./sc/cli/CliOutputFormat.c:                sizeof(sIpLineStatus)),
+./sc/cli/CliOutputFormat.c:            StringForIpLineStatus(pRtd->IpLineStatus, sIpLineStatus,
+./sc/cli/CliOutputFormat.c:                sizeof(sIpLineStatus)),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfUtils.c:		case _NetconfAttrTypeIpLineStatus_:
+./sc/netconf/NetconfUtils.c:			if (*((U32 *) pLocation) == _IpLineStatusInactive_)
+./sc/netconf/NetconfUtils.c:				for (TempU32 = _IpLineStatusActive_ ;
+./sc/netconf/NetconfUtils.c:					 TempU32 <= _IpLineStatusCallWaiting_ ;
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusActive_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusSend_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusReceive_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusHold_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatus3WayCall_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusCallWaiting_:
+./sc/netconf/NetconfUtils.c:	case _NetconfAttrTypeIpLineStatus_:
+./xponcore/gpon/olt/SxRtd.c:			    fsanOntCalixVoipCallStatsExt4Table_attr_info[ObjId_fsanOntCalixVoipCallStatsExt4IpLineStatus-3].mask_bit |
+./xponcore/port/e7/SxXlate.c:	dbObj->IpLineStatus = (U32)sxObj->ipLineStatus;
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:static OsabEnumDesc_t OmciVoipIpLineStatusEnum[] = {
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Inact , "Inact" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Act , "Act" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Snd , "Snd" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Rec , "Rec" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_SndRec , "SndRec" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Hld , "Hld" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_3wy , "3wy" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_cwt , "cwt" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:/* objectId */            ObjId_fsanOntCalixVoipCallStatsExt4IpLineStatus,
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:/* objectStr */           "fsanOntCalixVoipCallStatsExt4IpLineStatus",
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:/* nm_cli_abbr */         "IpLineStatus",
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:/* nm_cli_enum_desc */    OmciVoipIpLineStatusEnum
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    ObjId_fsanOntCalixVoipCallStatsExt4IpLineStatus,
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { "iplinestatus", ObjId_fsanOntCalixVoipCallStatsExt4IpLineStatus },
+./vxa/core/src/voipmgr.c:		pVoiceSvcRtData->IpLineStatus = 1;
+./lc/tasks/voip/VoipDB.c:    pVoiceSvcRtData->IpLineStatus = 1;
+./lc/tasks/voip/VoipDB.c:    pVoiceSvcRtData->IpLineStatus = 1;
+./lc/tasks/voip/VoipPotsmgrMsg.c:	pVoiceSvcRtData->IpLineStatus = 1;
+./sc/cli/CliOutputFormat.c:static char* StringForIpLineStatus (
+./sc/cli/CliOutputFormat.c:    U32    IpLineStatus,
+./sc/cli/CliOutputFormat.c:    char*  sIpLineStatus,
+./sc/cli/CliOutputFormat.c:StringForIpLineStatus: Output formatting utility.	
+./sc/cli/CliOutputFormat.c:Return:	        sIpLineStatus: the formatted status string.
+./sc/cli/CliOutputFormat.c:static char* StringForIpLineStatus (
+./sc/cli/CliOutputFormat.c:    U32    IpLineStatus,
+./sc/cli/CliOutputFormat.c:    char*  sIpLineStatus,
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus == _IpLineStatusInactive_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus,"inactive", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusActive_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "active", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusSend_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "send enabled", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusReceive_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "receive enabled", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusHold_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "hold", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatus3WayCall_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "3-way call", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusCallWaiting_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "call waiting", BufSz);
+./sc/cli/CliOutputFormat.c:    return sIpLineStatus;
+./sc/cli/CliOutputFormat.c:    } /* End of StringForIpLineStatus */
+./sc/cli/CliOutputFormat.c:    char sIpLineStatus[128]         = {'\0'};
+./sc/cli/CliOutputFormat.c:            StringForIpLineStatus(pRtd->IpLineStatus, sIpLineStatus,
+./sc/cli/CliOutputFormat.c:                sizeof(sIpLineStatus)),
+./sc/cli/CliOutputFormat.c:            StringForIpLineStatus(pRtd->IpLineStatus, sIpLineStatus,
+./sc/cli/CliOutputFormat.c:                sizeof(sIpLineStatus)),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfUtils.c:		case _NetconfAttrTypeIpLineStatus_:
+./sc/netconf/NetconfUtils.c:			if (*((U32 *) pLocation) == _IpLineStatusInactive_)
+./sc/netconf/NetconfUtils.c:				for (TempU32 = _IpLineStatusActive_ ;
+./sc/netconf/NetconfUtils.c:					 TempU32 <= _IpLineStatusCallWaiting_ ;
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusActive_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusSend_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusReceive_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusHold_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatus3WayCall_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusCallWaiting_:
+./sc/netconf/NetconfUtils.c:	case _NetconfAttrTypeIpLineStatus_:
+./xponcore/gpon/olt/SxRtd.c:			    fsanOntCalixVoipCallStatsExt4Table_attr_info[ObjId_fsanOntCalixVoipCallStatsExt4IpLineStatus-3].mask_bit |
+./xponcore/port/e7/SxXlate.c:	dbObj->IpLineStatus = (U32)sxObj->ipLineStatus;
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:static OsabEnumDesc_t OmciVoipIpLineStatusEnum[] = {
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Inact , "Inact" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Act , "Act" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Snd , "Snd" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Rec , "Rec" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_SndRec , "SndRec" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Hld , "Hld" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_3wy , "3wy" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_cwt , "cwt" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:/* objectId */            ObjId_fsanOntCalixVoipCallStatsExt4IpLineStatus,
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:/* objectStr */           "fsanOntCalixVoipCallStatsExt4IpLineStatus",
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:/* nm_cli_abbr */         "IpLineStatus",
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:/* nm_cli_enum_desc */    OmciVoipIpLineStatusEnum
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    ObjId_fsanOntCalixVoipCallStatsExt4IpLineStatus,
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { "iplinestatus", ObjId_fsanOntCalixVoipCallStatsExt4IpLineStatus },
+./vxa/core/src/voipmgr.c:		pVoiceSvcRtData->IpLineStatus = 1;

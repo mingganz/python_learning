@@ -1,0 +1,381 @@
+./system/libs/dbobjects/ObjSipSvc.h:#define _IpLineStatusInactive_		0
+./system/libs/dbobjects/ObjSipSvc.h:#define _IpLineStatusActive_		1
+./system/libs/dbobjects/ObjSipSvc.h:#define _IpLineStatusSend_			2
+./system/libs/dbobjects/ObjSipSvc.h:#define _IpLineStatusReceive_		4
+./system/libs/dbobjects/ObjSipSvc.h:#define _IpLineStatusHold_			8
+./system/libs/dbobjects/ObjSipSvc.h:#define _IpLineStatus3WayCall_ 		16
+./system/libs/dbobjects/ObjSipSvc.h:#define _IpLineStatusCallWaiting_	32
+./system/libs/dbobjects/ObjSipSvc.h:	U32						IpLineStatus;   
+Binary file ./system/libs/oam/obj_mips_ex/LcEnvMgr.o matches
+Binary file ./system/libs/oam/obj_t10xx_ex/LcEnvMgr.o matches
+Binary file ./system/message/oam/obj_t10xx_ex/OamMsgConvert.o matches
+Binary file ./system/message/oam/obj_mips_ex/OamMsgConvert.o matches
+Binary file ./system/tasks/fw/obj_t10xx_ex/FwDebugHelp.o matches
+Binary file ./system/tasks/fw/obj_t10xx_ex/FwDebugTask.o matches
+Binary file ./system/tasks/fw/obj_mips_ex/FwDebugHelp.o matches
+Binary file ./system/tasks/fw/obj_mips_ex/FwDebugTask.o matches
+Binary file ./system/tasks/ipmg/obj_t10xx_ex/IpMg.o matches
+Binary file ./system/tasks/ipmg/obj_mips_ex/IpMg.o matches
+Binary file ./system/tasks/timing/obj_t10xx_ex/TimingTask.o matches
+Binary file ./system/lib_t10xx_ex/liboam.a matches
+Binary file ./system/lib_t10xx_ex/libmessage.a matches
+Binary file ./system/lib_t10xx_ex/libfwtasks.a matches
+Binary file ./system/lib_t10xx_ex/libipmg.a matches
+Binary file ./system/lib_t10xx_ex/timing.a matches
+Binary file ./system/lib_mips_ex/liboam.a matches
+Binary file ./system/lib_mips_ex/libipmg.a matches
+Binary file ./system/lib_mips_ex/libmessage.a matches
+Binary file ./system/lib_mips_ex/libfwtasks.a matches
+Binary file ./lc/lib_mips_ex/libvoip.a matches
+Binary file ./lc/tasks/cpeagt/obj_t10xx_ex/cpeAgtRtd.o matches
+Binary file ./lc/tasks/pppox/obj_t10xx_ex/PppoxTask.o matches
+Binary file ./lc/tasks/si/obj_t10xx_ex/SiAricent.o matches
+Binary file ./lc/tasks/si/obj_t10xx_ex/SiEthOam.o matches
+Binary file ./lc/tasks/si/obj_t10xx_ex/SiLib.o matches
+Binary file ./lc/tasks/si/obj_t10xx_ex/SiTask.o matches
+./lc/tasks/voip/VoipDB.c:    pVoiceSvcRtData->IpLineStatus = 1;
+./lc/tasks/voip/VoipDB.c:    pVoiceSvcRtData->IpLineStatus = 1;
+./lc/tasks/voip/VoipPotsmgrMsg.c:	pVoiceSvcRtData->IpLineStatus = 1;
+Binary file ./lc/tasks/voip/obj_mips_ex/VoipPotsmgrMsg.o matches
+Binary file ./lc/tasks/voip/obj_mips_ex/VoipTask.o matches
+Binary file ./lc/tasks/voip/obj_mips_ex/VoipDB.o matches
+Binary file ./lc/tasks/xdsl/obj_t10xx_ex/XdslTask.o matches
+Binary file ./lc/voip/bin_mips_ex/cardmgr.bin.dbg matches
+Binary file ./lc/xdsl/bin_t10xx_ex_vdslr2/cardmgr.bin matches
+Binary file ./lc/xdsl/bin_t10xx_ex_vdslr2/cardmgr.bin.dbg matches
+Binary file ./lc/lib_t10xx_ex/libsi.a matches
+Binary file ./lc/lib_t10xx_ex/libxdsl.a matches
+Binary file ./lc/lib_t10xx_ex/libcpeagt.a matches
+Binary file ./lc/lib_t10xx_ex/libpppox.a matches
+./sc/cli/CliOutputFormat.c:static char* StringForIpLineStatus (
+./sc/cli/CliOutputFormat.c:    U32    IpLineStatus,
+./sc/cli/CliOutputFormat.c:    char*  sIpLineStatus,
+./sc/cli/CliOutputFormat.c:StringForIpLineStatus: Output formatting utility.	
+./sc/cli/CliOutputFormat.c:Return:	        sIpLineStatus: the formatted status string.
+./sc/cli/CliOutputFormat.c:static char* StringForIpLineStatus (
+./sc/cli/CliOutputFormat.c:    U32    IpLineStatus,
+./sc/cli/CliOutputFormat.c:    char*  sIpLineStatus,
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus == _IpLineStatusInactive_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus,"inactive", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusActive_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "active", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusSend_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "send enabled", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusReceive_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "receive enabled", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusHold_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "hold", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatus3WayCall_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "3-way call", BufSz);
+./sc/cli/CliOutputFormat.c:    if (IpLineStatus & _IpLineStatusCallWaiting_)
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, HasBits ? ", " : "", BufSz);
+./sc/cli/CliOutputFormat.c:        strlcat(sIpLineStatus, "call waiting", BufSz);
+./sc/cli/CliOutputFormat.c:    return sIpLineStatus;
+./sc/cli/CliOutputFormat.c:    } /* End of StringForIpLineStatus */
+./sc/cli/CliOutputFormat.c:    char sIpLineStatus[128]         = {'\0'};
+./sc/cli/CliOutputFormat.c:            StringForIpLineStatus(pRtd->IpLineStatus, sIpLineStatus,
+./sc/cli/CliOutputFormat.c:                sizeof(sIpLineStatus)),
+./sc/cli/CliOutputFormat.c:            StringForIpLineStatus(pRtd->IpLineStatus, sIpLineStatus,
+./sc/cli/CliOutputFormat.c:                sizeof(sIpLineStatus)),
+Binary file ./sc/cli/obj_t10xx_ex/Cli3pLib.o matches
+Binary file ./sc/cli/obj_t10xx_ex/Cli8023ahLb.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliAccessIdProf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliAddrKey.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliAlarm.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliAvoCfg.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliBackplaneLink.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliBase.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliBar.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliCard.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliBwProf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliClassMap.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliCmdProcessing.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliCosQueueCfg.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliCraftFe.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliCraftSerial.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliDbgAccess.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliCraftUser.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliDhcpLeases.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliDialPlan.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliDhcpCfg.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliDot1x.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliDot1xProf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliDscpMap.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliDslCoefficient.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEnvPin.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliErps.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliDslBondedIntf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEthGos.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEthOamMeg.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEthMirror.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEthOamCfg.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEthOamDiscRmtMep.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEthOamFrameMeasProf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEthOamLb.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEthOamLt.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEthOamMep.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEthOamRmtMep.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEthOamMip.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEthPort.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEthSecuProf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEthOamStats.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEthSvc.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEthSvcName.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliFanTray.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliExternOnt.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliG8032Ring.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliFfp.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliGponPort.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliH248LcGw.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliInitConfig.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliH248LcGwSvc.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliH248GwProf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliH248GwSvc.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliIntfVlanIgmp.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliIpHost.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliIpPrecMap.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliL2cp.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliL2Acl.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliLacpInfo.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliLicense.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliIgmp.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliLldp.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliLink.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliMacFilter.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliMac.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliMcastMap.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliMcast.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliMcastProf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliMcastWhiteList.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliMgcpSvc.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliMgcpProf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliMcShelf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliMgmtCfg.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliNetconf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliMgmtGe.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliMvr.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliNotf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliNtp.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliOntT1Gos.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliOnt.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliOntDbg.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliOntEthGos.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliOntMgmtSvc.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliOntConfigFile.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliEthSvcStaticAddr.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliOntPwe3Prof.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliOntOnlyUpgrade.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliOntPonUsCos.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliOntOpticalTest.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliOntPort.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliOntProf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliOntPwe3Svc.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliOntPwe3SvcGos.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliOntRemoteDiag.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliPonCosCfg.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliOntSummary.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliOutputFormat.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliParamProcessing.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliPm.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliPolicyMap.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliPonPortCos.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliPotsLineTest.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliPotsPort.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliPonUsCosProf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliPppoeDiscStats.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliPppoeProf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliPppoeSess.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliProv.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliRadius.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliPowerZone.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliRfc2544Loopback.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliRcSupport.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliRfAvo.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliRogueOntDet.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliRstp.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliSessMgmt.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliSelt.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliSipGwProf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliSipProf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliSipSvc.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliShowTechSupport.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliSnmpAgtConfig.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliSnmpCommunity.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliSnmpUser.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliSnmpTrapDest.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliSSHSupport.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliStaticMcastSrc.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliSvcMatchList.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliSvcTagAction.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliTdmGwProf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliSyslogServer.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliSystem.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliTagAction.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliT1Pwe3Prof.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliTask.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliTdmGwSvc.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliTimezone.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliTiming.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliTr69Prof.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliUpgrade.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliVccPort.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliVdslPortTemplate.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliValidate.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliVdslPort.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliVcpMgmt.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliVlan.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliVdslPortGos.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliVdslPortParams.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliVlanAssoc.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliVdslVector.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliVlanIgmpProf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliVlanMbr.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliVlanIpHost.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliDhcpSvcProf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliVlanMonitor.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliCpePort.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliCpePortParams.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliCpeBondedUplink.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliVoicePolicyProf.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliPowerDomain.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliActivation.o matches
+Binary file ./sc/cli/obj_t10xx_ex/CliGlobalOption.o matches
+Binary file ./sc/debug/oam/obj_t10xx_ex/DbgProvMgr.o matches
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/NetconfObjects.c:			offsetof(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfObjects.c:			_SizeofTypeMember_(tVoiceSvcRtData, IpLineStatus),
+./sc/netconf/NetconfUtils.c:		case _NetconfAttrTypeIpLineStatus_:
+./sc/netconf/NetconfUtils.c:			if (*((U32 *) pLocation) == _IpLineStatusInactive_)
+./sc/netconf/NetconfUtils.c:				for (TempU32 = _IpLineStatusActive_ ;
+./sc/netconf/NetconfUtils.c:					 TempU32 <= _IpLineStatusCallWaiting_ ;
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusActive_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusSend_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusReceive_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusHold_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatus3WayCall_:
+./sc/netconf/NetconfUtils.c:						case _IpLineStatusCallWaiting_:
+./sc/netconf/NetconfUtils.c:	case _NetconfAttrTypeIpLineStatus_:
+./sc/netconf/NetconfUtils.h:	_NetconfAttrTypeIpLineStatus_,
+./sc/netconf/e3.xsd:  <xs:simpleType name="IpLineStatusType">
+./sc/netconf/e3.xsd:  <xs:simpleType name="ListOfIpLineStatusType">
+./sc/netconf/e3.xsd:    <xs:list itemType="IpLineStatusType"/>
+./sc/netconf/e3.xsd:      <xs:element name="ip-line-status" type="ListOfIpLineStatusType"/>
+./sc/netconf/e3.xsd:      <xs:element name="ip-line-status" type="ListOfIpLineStatusType"/>
+./sc/netconf/e3.xsd:      <xs:element name="ip-line-status" type="ListOfIpLineStatusType"/>
+./sc/netconf/ex.xsd:  <xs:simpleType name="IpLineStatusType">
+./sc/netconf/ex.xsd:  <xs:simpleType name="ListOfIpLineStatusType">
+./sc/netconf/ex.xsd:    <xs:list itemType="IpLineStatusType"/>
+./sc/netconf/ex.xsd:      <xs:element name="ip-line-status" type="ListOfIpLineStatusType"/>
+./sc/netconf/ex.xsd:      <xs:element name="ip-line-status" type="ListOfIpLineStatusType"/>
+./sc/netconf/ex.xsd:      <xs:element name="ip-line-status" type="ListOfIpLineStatusType"/>
+./sc/netconf/ex.xsd:      <xs:element name="ip-line-status" type="ListOfIpLineStatusType"/>
+./sc/netconf/vcp_ex.xsd:  <xs:simpleType name="IpLineStatusType">
+./sc/netconf/vcp_ex.xsd:  <xs:simpleType name="ListOfIpLineStatusType">
+./sc/netconf/vcp_ex.xsd:    <xs:list itemType="IpLineStatusType"/>
+./sc/netconf/vcp_ex.xsd.bak:  <xs:simpleType name="IpLineStatusType">
+./sc/netconf/vcp_ex.xsd.bak:  <xs:simpleType name="ListOfIpLineStatusType">
+./sc/netconf/vcp_ex.xsd.bak:    <xs:list itemType="IpLineStatusType"/>
+Binary file ./sc/netconf/obj_t10xx_ex/NetconfAction.o matches
+Binary file ./sc/netconf/obj_t10xx_ex/NetconfActionDsl.o matches
+Binary file ./sc/netconf/obj_t10xx_ex/NetconfActionOnt.o matches
+Binary file ./sc/netconf/obj_t10xx_ex/NetconfHandle.o matches
+Binary file ./sc/netconf/obj_t10xx_ex/NetconfHandleOnt.o matches
+Binary file ./sc/netconf/obj_t10xx_ex/NetconfHandleDsl.o matches
+Binary file ./sc/netconf/obj_t10xx_ex/NetconfObjects.o matches
+Binary file ./sc/netconf/obj_t10xx_ex/NetconfUtils.o matches
+Binary file ./sc/oam/provmgr/obj_t10xx_ex/ProvMgrRtd.o matches
+Binary file ./sc/oam/obj_t10xx_ex/OamdTask.o matches
+Binary file ./sc/radius/obj_t10xx_ex/RadiusTask.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5Interfaces.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5OltPonTable.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5OntMacAddress.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5SNIMacAddress.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5Ont.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5UNIMacAddress.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5UNIStats.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5Xdsl2SCStatusBand.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5VdslPhys.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5VdslPort.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5VlanMacAddress.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5Xdsl2LineBand.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5Xdsl2Line.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5Xdsl2LineInventory.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5Xdsl2LineSeg.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5Xdsl2LineSegment.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5Xdsl2SCStatus.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5Xdsl2SCStatusSegment.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5XdslSeltReportStatus.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpMibE5XdslSeltLine.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpOampUtil.o matches
+Binary file ./sc/snmp/obj_t10xx_ex/SnmpTask.o matches
+Binary file ./sc/lib_t10xx_ex/libdebugscoam.a matches
+Binary file ./sc/lib_t10xx_ex/libprovmgr.a matches
+Binary file ./sc/lib_t10xx_ex/liboam.a matches
+Binary file ./sc/lib_t10xx_ex/libnetconf.a matches
+Binary file ./sc/lib_t10xx_ex/libcli.a matches
+Binary file ./sc/lib_t10xx_ex/libradius.a matches
+Binary file ./sc/lib_t10xx_ex/libsnmp.a matches
+Binary file ./3rdparty/lib_t10xx_ex/libCglAll.a matches
+Binary file ./3rdparty/lib_t10xx_ex/libCglPortE7.a matches
+./xponcore/gpon/olt/SxRtd.c:			    fsanOntCalixVoipCallStatsExt4Table_attr_info[ObjId_fsanOntCalixVoipCallStatsExt4IpLineStatus-3].mask_bit |
+./xponcore/gpon/omci/ontmib/FSAN_ONT_VOIP_MIB.mib:    OmciVoipIpLineStatus,
+./xponcore/gpon/omci/ontmib/FSAN_ONT_VOIP_MIB.mib:        fsanOntCalixVoipCallStatsExt4IpLineStatus
+./xponcore/gpon/omci/ontmib/FSAN_ONT_VOIP_MIB.mib:            OmciVoipIpLineStatus,
+./xponcore/gpon/omci/ontmib/FSAN_ONT_VOIP_MIB.mib:-- %CLICOLLABEL IpLineStatus
+./xponcore/gpon/omci/ontmib/FSAN_ONT_VOIP_MIB.mib:fsanOntCalixVoipCallStatsExt4IpLineStatus OBJECT-TYPE
+./xponcore/gpon/omci/ontmib/FSAN_ONT_VOIP_MIB.mib:    SYNTAX      OmciVoipIpLineStatus
+./xponcore/gpon/omci/ontmib/OMCI-TC.mib:OmciVoipIpLineStatus ::= TEXTUAL-CONVENTION
+./xponcore/gpon/omci/ontmib/FSAN_ONT_VZ_MIB.mib:    OmciVoipIpLineStatus,
+./xponcore/gpon/omci/ontmib/OMCI-TC.mib.bak:OmciVoipIpLineStatus ::= TEXTUAL-CONVENTION
+./xponcore/port/e7/SxXlate.c:	dbObj->IpLineStatus = (U32)sxObj->ipLineStatus;
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.h:    ObjId_fsanOntCalixVoipCallStatsExt4IpLineStatus,
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.h:    OmciVoipIpLineStatus_Inact = 0,
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.h:    OmciVoipIpLineStatus_Act = 1,
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.h:    OmciVoipIpLineStatus_Snd = 2,
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.h:    OmciVoipIpLineStatus_Rec = 4,
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.h:    OmciVoipIpLineStatus_SndRec = 6,
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.h:    OmciVoipIpLineStatus_Hld = 8,
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.h:    OmciVoipIpLineStatus_3wy = 16,
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.h:    OmciVoipIpLineStatus_cwt = 32
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:static OsabEnumDesc_t OmciVoipIpLineStatusEnum[] = {
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Inact , "Inact" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Act , "Act" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Snd , "Snd" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Rec , "Rec" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_SndRec , "SndRec" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_Hld , "Hld" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_3wy , "3wy" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { OmciVoipIpLineStatus_cwt , "cwt" },
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:/* objectId */            ObjId_fsanOntCalixVoipCallStatsExt4IpLineStatus,
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:/* objectStr */           "fsanOntCalixVoipCallStatsExt4IpLineStatus",
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:/* nm_cli_abbr */         "IpLineStatus",
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:/* nm_cli_enum_desc */    OmciVoipIpLineStatusEnum
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    ObjId_fsanOntCalixVoipCallStatsExt4IpLineStatus,
+./xponcore/target/e7/t10xx/FSAN_ONT_VOIP_MIB.c:    { "iplinestatus", ObjId_fsanOntCalixVoipCallStatsExt4IpLineStatus },
+./vxa/core/src/voipmgr.c:		pVoiceSvcRtData->IpLineStatus = 1;
+Binary file ./z matches
+Binary file ./v matches
+Binary file ./zv matches
