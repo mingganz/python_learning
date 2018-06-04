@@ -30,3 +30,4 @@ print(e)
 
 f = {key:a[key] for key in a.keys() - {'z', 'w'}}
 print(f)
+print(__name__)

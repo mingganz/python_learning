@@ -12,7 +12,10 @@ def dedupe(items):
             yield item
             seen.add(item)
             
+print(__name__)
+
 if __name__ == '__main__':
     a = [1, 5, 2, 1, 9, 1, 5, 10]
     b = list(dedupe(a))
     print(b)
+    print("This is module remove_dup!!!!!!!!!")
