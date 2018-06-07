@@ -4,6 +4,14 @@ class Pets:
     def about(cls):
         print(cls.name)
 
+    @staticmethod
+    def info():
+        print('static: info')
+
+    def __new__(cls):
+        print("Pets: %s" % cls.name)
+        return cls
+
 class Dogs(Pets):
     name = 'This is a Dog'
 
@@ -13,9 +21,11 @@ class Cats(Pets):
 def main():
     p = Pets()
     p.about()
+    p.info()
 
     d = Dogs()
     d.about()
+    d.info()
 
     c = Cats()
     c.about()
