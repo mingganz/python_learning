@@ -20,6 +20,8 @@ def main():
     c = Cats()
     c.about()
 
+    print(issubclass(Dogs, Pets))
+
 if __name__ == '__main__':
     main()
 
