@@ -39,5 +39,33 @@ def main():
             momentum=0.99)
     print(model.predict(mx.nd.array([[0.5, 0.5]])))
     
+    import matplotlib.pyplot as plt 
+    from mpl_toolkits.mplot3d import Axes3D
+    
+    x = np.arange(0, 1.05, 0.05)
+    y = np.arange(0, 1.05, 0.05)
+    x,y = np.meshgrid(x, y)
+    grids = mx.nd.array([[x[i][j], y[i][j]] for i in range(x.shape[0]) 
+        for j in range(x.shape[1])])
+    grid_probs = model.predict(grids)[:, 1].reshape(x.shape)
+    
+    fig = plt.figure('Sample Surface')
+    ax = fig.gca(projection='3d')
+    
+    ax.plot_surface(x, y, grid_probs, alpha=0.15, color='k', rstride=2, 
+                    cstride=2, lw=0.5)
+    
+    samples0 = samples[labels==0]
+    samples0_probs = model.predict(samples0)[:, 1]
+    samples1 = samples[labels==1]
+    samples1_probs = model.predict(samples1)[:, 1]
+    
+    ax.scatter(samples0[:, 0], samples0[:, 1], samples0_probs, c='r',
+               marker = 'o', s=50)
+    ax.scatter(samples1[:, 0], samples1[:, 1], samples1_probs, c='b',
+               marker = '^', s=50)
+    plt.savefig('surface.jpg')
+    plt.show()
+    
 if __name__ == '__main__':
     main()
