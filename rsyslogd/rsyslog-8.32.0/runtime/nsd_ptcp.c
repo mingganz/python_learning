@@ -815,14 +815,14 @@ Connect(nsd_t *pNsd, int family, uchar *port, uchar *host, char *device)
         ifr.ifr_addr.sa_family = AF_INET;
         strncpy (ifr.ifr_name, pThis->srcInterface, IFNAMSIZ-1);
         if (ioctl (sfd, SIOCGIFADDR, &ifr) < 0) {
-            LogError(errno, RS_RET_IO_ERROR, "error %d in ioctl call SIOCGIFADDR. Perhaps no ip addr associated with %s\n", errno, pThis->srcInterface);
+            dbgprintf("error %d in ioctl call SIOCGIFADDR. Perhaps no ip addr associated with %s\n", errno, pThis->srcInterface);
             close(sfd);
             ABORT_FINALIZE(RS_RET_IO_ERROR);
         }
         close(sfd);
 
         if (bind(pThis->sock, (struct sockaddr *) &ifr.ifr_addr, sizeof (struct sockaddr)) < 0) {
-            LogError(errno, RS_RET_IO_ERROR, "error %d in bind with srcif %s\n", errno, pThis->srcInterface);
+            dbgprintf("error %d in bind\n", errno);
             ABORT_FINALIZE(RS_RET_IO_ERROR);
         }
     }
