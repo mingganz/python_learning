@@ -1271,9 +1271,7 @@ CODESTARTnewActInst
 		} else if(!strcmp(actpblk.descr[i].name, "gnutlsprioritystring")) {
 			pData->gnutlsPriorityString = (uchar*)es_str2cstr(pvals[i].val.d.estr, NULL);
 		} else if (!strcmp(actpblk.descr[i].name, "srcif")) {
-			if (strlen(pvals[i].val.d.estr) > 0) {
-            	pData->srcInterface = es_str2cstr(pvals[i].val.d.estr, NULL);
-			}
+            pData->srcInterface = es_str2cstr(pvals[i].val.d.estr, NULL);
 		} else if(!strcmp(actpblk.descr[i].name, "streamdriver")) {
 			pData->pszStrmDrvr = (uchar*)es_str2cstr(pvals[i].val.d.estr, NULL);
 		} else if(!strcmp(actpblk.descr[i].name, "streamdrivermode")) {
