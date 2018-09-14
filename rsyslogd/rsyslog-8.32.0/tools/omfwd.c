@@ -57,9 +57,6 @@
 #include "errmsg.h"
 #include "unicode-helper.h"
 #include "parserif.h"
-#include "net/if.h"     /* Calix - needed for if_nametoindex */
-#include <sys/ioctl.h>  /* Calix - needed for ioctl() */
-
 
 MODULE_TYPE_OUTPUT
 MODULE_TYPE_NOKEEP
@@ -99,7 +96,6 @@ typedef struct _instanceData {
 	int iKeepAliveProbes;
 	int iKeepAliveTime;
 	uchar *gnutlsPriorityString;
-    char *srcInterface;    /* Calix - source interface for outgoing messages */
 
 #	define	FORW_UDP 0
 #	define	FORW_TCP 1
@@ -184,7 +180,6 @@ static struct cnfparamdescr actpdescr[] = {
 	{ "keepalive.time", eCmdHdlrPositiveInt, 0 },
 	{ "keepalive.interval", eCmdHdlrPositiveInt, 0 },
 	{ "gnutlsprioritystring", eCmdHdlrString, 0 },
-	{ "srcif", eCmdHdlrGetWord, 0 },
 	{ "streamdriver", eCmdHdlrGetWord, 0 },
 	{ "streamdrivermode", eCmdHdlrInt, 0 },
 	{ "streamdriverauthmode", eCmdHdlrGetWord, 0 },
@@ -401,9 +396,6 @@ CODESTARTfreeInstance
 	free(pData->networkNamespace);
 	free(pData->target);
 	free(pData->device);
-    /* Calix */
-    if (pData->srcInterface != NULL)
-        free(pData->srcInterface);
 	net.DestructPermittedPeers(&pData->pPermPeers);
 ENDfreeInstance
 
@@ -477,105 +469,30 @@ static rsRetVal UDPSend(wrkrInstanceData_t *__restrict__ const pWrkrData,
 		for (i = 0; runSockArrayLoop && (i < *pWrkrData->pSockArray) ; i++) {
 			int try_send = 1;
 			size_t lenThisTry = len;
-            unsigned int ifindex = 0;
-            
 			while(try_send) {
-                /* Calix - check srcInterface field */
-                if (pWrkrData->pData && (pWrkrData->pData->srcInterface != NULL)) {
-                    ifindex = if_nametoindex(pWrkrData->pData->srcInterface);
-                }
-                /* Calix - default behavior, if no ifindex */
-                if (ifindex == 0) {
-                    lsent = sendto(pWrkrData->pSockArray[i+1], msg, lenThisTry, 0,
-                            r->ai_addr, r->ai_addrlen);
-                            
-                    if (lsent == (ssize_t) lenThisTry) {
-                        bSendSuccess = RSTRUE;
-                        try_send = 0;
-                        runSockArrayLoop = 0;
-                    } else if(errno == EMSGSIZE) {
-                        const size_t newlen = (lenThisTry > 1024) ? lenThisTry - 1024 : 512;
-                        LogError(0, RS_RET_UDP_MSGSIZE_TOO_LARGE,
-                            "omfwd/udp: send failed due to message being too "
-                            "large for this system. Message size was %u bytes. "
-                            "Truncating to %u bytes and retrying.",
-                            (unsigned) lenThisTry, (unsigned) newlen);
-                        lenThisTry = newlen;
-                    } else {
-                        reInit = RSTRUE;
-                        lasterrno = errno;
-                        lasterr_sock = pWrkrData->pSockArray[i+1];
-                        LogError(lasterrno, RS_RET_ERR_UDPSEND,
-                            "omfwd/udp: socket %d: sendto() error",
-                            lasterr_sock);
-                        try_send = 0;
-                    }
-                }
-                else /* Calix: replace sendto with sendmsg to insert src interface */
-                {
-                    struct msghdr msgh = {0};
-                    struct iovec iov;
-                    int fd=pWrkrData->pSockArray[i+1];
-                    struct cmsghdr *cmsgptr;
-                    union {
-                        char cmsg[CMSG_SPACE(sizeof(struct in_pktinfo))];
-                        char cmsg6[CMSG_SPACE(sizeof(struct in6_pktinfo))];
-                    } u;
-
-                    memset(&u, 0, sizeof(u));
-
-                    iov.iov_base = msg;
-                    iov.iov_len = len;
-                    msgh.msg_iov = &iov;
-                    msgh.msg_iovlen = 1;
-
-                    if (r->ai_addr) {
-                        msgh.msg_name = (struct sockaddr *)r->ai_addr;
-                        msgh.msg_namelen = r->ai_addrlen;
-                    }
-
-                    msgh.msg_control = &u;
-                    msgh.msg_controllen = sizeof(u);
-
-                    cmsgptr = CMSG_FIRSTHDR(&msgh);
-                    if (r->ai_addr->sa_family == AF_INET) {
-                        int sfd;
-                        struct ifreq ifr;
-                        struct in_pktinfo *pktinfo;
-                        cmsgptr->cmsg_level = SOL_IP; // or IPPROTO_IP?
-                        cmsgptr->cmsg_type = IP_PKTINFO;
-                        cmsgptr->cmsg_len = CMSG_LEN(sizeof(struct in_pktinfo));
-                        pktinfo = (struct in_pktinfo *) CMSG_DATA(cmsgptr);
-                        // Important: It doesn't work if the ipi_ifindex is set explicitly.
-                        // It needs to be set to 0. ipi_spec_dst does the trick.
-                        // pktinfo->ipi_ifindex = ifindex;
-                        pktinfo->ipi_ifindex = 0;
-
-                        sfd = socket(AF_INET, SOCK_DGRAM, 0);
-                        ifr.ifr_addr.sa_family = AF_INET;
-                        strncpy (ifr.ifr_name, pWrkrData->pData->srcInterface, IFNAMSIZ-1);
-                        ioctl(sfd, SIOCGIFADDR, &ifr);
-                        close(sfd);
-                        pktinfo->ipi_spec_dst = ((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr;
-                    }
-                    else if (r->ai_addr->sa_family == AF_INET6) {
-                        struct in6_pktinfo *pktinfo;
-                        cmsgptr->cmsg_level = SOL_IPV6; // or IPPROTO_IPV6?
-                        cmsgptr->cmsg_type = IPV6_PKTINFO;
-                        cmsgptr->cmsg_len = CMSG_LEN(sizeof(struct in6_pktinfo));
-                        pktinfo = (struct in6_pktinfo *) CMSG_DATA(cmsgptr);
-                        pktinfo->ipi6_ifindex = ifindex;
-                        // TODO - IPv6 probably also needs the s_addr
-                    }
-
-                    msgh.msg_controllen = cmsgptr->cmsg_len;
-
-                    lsent = sendmsg(fd, &msgh, 0);
-                    
-                    bSendSuccess = RSTRUE;
-                    try_send = 0;
-                    runSockArrayLoop = 0;
-                }                
+				lsent = sendto(pWrkrData->pSockArray[i+1], msg, lenThisTry, 0,
+						r->ai_addr, r->ai_addrlen);
+				if (lsent == (ssize_t) lenThisTry) {
+					bSendSuccess = RSTRUE;
+					try_send = 0;
+					runSockArrayLoop = 0;
+				} else if(errno == EMSGSIZE) {
+					const size_t newlen = (lenThisTry > 1024) ? lenThisTry - 1024 : 512;
+					LogError(0, RS_RET_UDP_MSGSIZE_TOO_LARGE,
+						"omfwd/udp: send failed due to message being too "
+						"large for this system. Message size was %u bytes. "
+						"Truncating to %u bytes and retrying.",
+						(unsigned) lenThisTry, (unsigned) newlen);
+					lenThisTry = newlen;
+				} else {
+					reInit = RSTRUE;
+					lasterrno = errno;
+					lasterr_sock = pWrkrData->pSockArray[i+1];
+					LogError(lasterrno, RS_RET_ERR_UDPSEND,
+						"omfwd/udp: socket %d: sendto() error",
+						lasterr_sock);
+					try_send = 0;
+				}
 			}
 		}
 		if (lsent == (ssize_t) len && !pWrkrData->pData->bSendToAll)
@@ -831,10 +748,6 @@ static rsRetVal TCPSendInit(void *pvData)
 		if(pData->pPermPeers != NULL) {
 			CHKiRet(netstrm.SetDrvrPermPeers(pWrkrData->pNetstrm, pData->pPermPeers));
 		}
-        /* Calix */
-        if(pData->srcInterface != NULL) {
-			CHKiRet(netstrm.SetSourceInterface(pWrkrData->pNetstrm, pData->srcInterface));
-        }
 		/* params set, now connect */
 		if(pData->gnutlsPriorityString != NULL) {
 			CHKiRet(netstrm.SetGnutlsPriorityString(pWrkrData->pNetstrm, pData->gnutlsPriorityString));
@@ -1152,8 +1065,6 @@ initTCP(wrkrInstanceData_t *pWrkrData)
 		CHKiRet(tcpclt.SetFraming(pWrkrData->pTCPClt, pData->tcp_framing));
 		CHKiRet(tcpclt.SetFramingDelimiter(pWrkrData->pTCPClt, pData->tcp_framingDelimiter));
 		CHKiRet(tcpclt.SetRebindInterval(pWrkrData->pTCPClt, pData->iRebindInterval));
-        /* Calix */
-		CHKiRet(tcpclt.SetSourceInterface(pWrkrData->pTCPClt, pData->srcInterface));
 	}
 finalize_it:
 	RETiRet;
@@ -1186,8 +1097,6 @@ setInstParamDefaults(instanceData *pData)
 	pData->compressionLevel = 9;
 	pData->strmCompFlushOnTxEnd = 1;
 	pData->compressionMode = COMPRESS_NEVER;
-    /* Calix */
-    pData->srcInterface = NULL;
 }
 
 BEGINnewActInst
@@ -1270,8 +1179,6 @@ CODESTARTnewActInst
 			pData->iKeepAliveTime = (int) pvals[i].val.d.n;
 		} else if(!strcmp(actpblk.descr[i].name, "gnutlsprioritystring")) {
 			pData->gnutlsPriorityString = (uchar*)es_str2cstr(pvals[i].val.d.estr, NULL);
-		} else if (!strcmp(actpblk.descr[i].name, "srcif")) {
-            pData->srcInterface = es_str2cstr(pvals[i].val.d.estr, NULL);
 		} else if(!strcmp(actpblk.descr[i].name, "streamdriver")) {
 			pData->pszStrmDrvr = (uchar*)es_str2cstr(pvals[i].val.d.estr, NULL);
 		} else if(!strcmp(actpblk.descr[i].name, "streamdrivermode")) {
@@ -1508,30 +1415,7 @@ CODE_STD_STRING_REQUESTparseSelectorAct(1)
 	if(pData->port == NULL) {
 		CHKmalloc(pData->port = strdup("514"));
 	}
-
-    /* Calix - Check if we have "srcif:<src-interface" field                     */
-    /* Format is like this:                                                     */
-    /*           *.* @@remote-host:514 srcif:src-interface      # ReMoTe HoSt    */
-
-	while(*p && isspace((int) *p))
-		++p; /* SKIP spaces */
-
-    if(strncmp((const char *) p, "srcif:", strlen("srcif:")) == 0) {
-        /* bingo! */
-        p += strlen("srcif:");
-        char *src_interface=(char *)p;
-        /* the rest of the line (until space or #) is the src interface */
-        while (!isspace((int) *p) && *p != '#')
-            ++p;
-        *p = '\0';  /* terminate the src-interface, note: it may be empty also */
-        if ((char *) p != src_interface) {
-            /* We got something in this field */
-            CHKmalloc(pData->srcInterface = strdup(src_interface));
-        }
-        /* In either case, advance the p pointer */
-        p++;
-    }
-
+	
 	/* now skip to template */
 	while(*p && *p != ';'  && *p != '#' && !isspace((int) *p))
 		++p; /*JUST SKIP*/

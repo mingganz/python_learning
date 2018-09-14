@@ -53,8 +53,6 @@
 #include "nsd_ptcp.h"
 #include "prop.h"
 #include "dnscache.h"
-#include <linux/if.h>   // Calix - needed for ifreq
-#include <sys/ioctl.h>  // Calix - needed for ioctl()
 
 MODULE_TYPE_LIB
 MODULE_TYPE_NOKEEP
@@ -94,9 +92,6 @@ CODESTARTobjDestruct(nsd_ptcp)
 	if(pThis->remoteIP != NULL)
 		prop.Destruct(&pThis->remoteIP);
 	free(pThis->pRemHostName);
-    /* Calix: */
-    if (pThis->srcInterface != NULL)
-        free(pThis->srcInterface);
 ENDobjDestruct(nsd_ptcp)
 
 
@@ -281,29 +276,6 @@ SetKeepAliveTime(nsd_t *pNsd, int keepAliveTime)
 
 	RETiRet;
 }
-
-/* Calix - source interface per syslog server
- */
-static rsRetVal
-SetSourceInterface(nsd_t *pNsd, char *srcInterface)
-{
-	nsd_ptcp_t *pThis = (nsd_ptcp_t*) pNsd;
-	DEFiRet;
-
-	ISOBJ_TYPE_assert((pThis), nsd_ptcp);
-
-    if (srcInterface != NULL) {
-        CHKmalloc(pThis->srcInterface = MALLOC(strlen(srcInterface)+1));
-        memcpy(pThis->srcInterface, srcInterface, strlen(srcInterface)+1);
-    }
-    else {
-        pThis->srcInterface = NULL;
-    }
-
-finalize_it:
-	RETiRet;
-}
-
 
 /* abort a connection. This is meant to be called immediately
  * before the Destruct call. -- rgerhards, 2008-03-24
@@ -807,25 +779,6 @@ Connect(nsd_t *pNsd, int family, uchar *port, uchar *host, char *device)
 		}
 	}
 
-    /* Calix: bind before connect - https://idea.popcount.org/2014-04-03-bind-before-connect/ */
-    if (pThis->srcInterface != NULL) {
-        int sfd;
-        struct ifreq ifr;
-        sfd = socket(AF_INET, SOCK_DGRAM, 0);
-        ifr.ifr_addr.sa_family = AF_INET;
-        strncpy (ifr.ifr_name, pThis->srcInterface, IFNAMSIZ-1);
-        if (ioctl (sfd, SIOCGIFADDR, &ifr) < 0) {
-            dbgprintf("error %d in ioctl call SIOCGIFADDR. Perhaps no ip addr associated with %s\n", errno, pThis->srcInterface);
-            close(sfd);
-            ABORT_FINALIZE(RS_RET_IO_ERROR);
-        }
-        close(sfd);
-
-        if (bind(pThis->sock, (struct sockaddr *) &ifr.ifr_addr, sizeof (struct sockaddr)) < 0) {
-            dbgprintf("error %d in bind\n", errno);
-            ABORT_FINALIZE(RS_RET_IO_ERROR);
-        }
-    }
 	if(connect(pThis->sock, res->ai_addr, res->ai_addrlen) != 0) {
 		LogError(errno, RS_RET_IO_ERROR, "cannot connect to %s:%s",
 			host, port);
@@ -944,8 +897,6 @@ CODESTARTobjQueryInterface(nsd_ptcp)
 	pIf->SetKeepAliveIntvl = SetKeepAliveIntvl;
 	pIf->SetKeepAliveProbes = SetKeepAliveProbes;
 	pIf->SetKeepAliveTime = SetKeepAliveTime;
-/* Calix addition for setting source interface: */
-	pIf->SetSourceInterface = SetSourceInterface;
 finalize_it:
 ENDobjQueryInterface(nsd_ptcp)
 
