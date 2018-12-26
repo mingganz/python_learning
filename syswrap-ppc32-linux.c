@@ -1249,6 +1249,7 @@ static SyscallTableEntry syscall_table[] = {
    LINXY(__NR_recvfrom,          sys_recvfrom),         // 337
    LINX_(__NR_shutdown,          sys_shutdown),         // 338
    LINX_(__NR_setsockopt,        sys_setsockopt),       // 339
+   LINX_(__NR_getsockopt,        sys_getsockopt),       // 340
 
    LINXY(__NR_recvmmsg,          sys_recvmmsg),         // 343
    LINXY(__NR_accept4,           sys_accept4),          // 344
